@@ -8,7 +8,7 @@
 #include <errno.h>
 
 #define MAXLINE 1023
-#define PORT 	54321
+#define PORT 	33333
 
 void str_cli(FILE* fp, int sockfd)
 {
@@ -36,18 +36,25 @@ void str_cli(FILE* fp, int sockfd)
 				perror("read error");
 				exit(0);
 			}
-			printf("Server: %s\n", recvline);
+			if(strlen(recvline) > 0)
+				printf("Server: %s\n", recvline + 4);
 			memset(recvline, 0x00, MAXLINE);
 		}
 
 		if(FD_ISSET(fileno(fp), &rset))
 		{
+			char buffer[256];
+			memset(sendline, 0x00, sizeof(sendline));
+			memset(buffer, 0x00, sizeof(buffer));
 			if(fgets(sendline, MAXLINE, fp) == NULL)
 			{
 				return;
 			}
-			printf(" sockfd: %d message: %s\n", sockfd, sendline);
-			write(sockfd, sendline, strlen(sendline));
+			
+			int len = strlen(sendline);
+			memcpy(buffer, &len, sizeof(len));
+			memcpy(buffer + sizeof(len), sendline, sizeof(sendline));
+			write(sockfd, buffer, strlen(sendline) + 4);
 		}
 	}
 }
