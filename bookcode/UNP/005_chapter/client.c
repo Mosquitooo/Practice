@@ -19,8 +19,8 @@ void str_cli(FILE* fp, int sockfd)
 	for(;;)
 	{
 		//注意不要把rset看作是简单的一个变量
-		//注意它其实是可以包含一组套接字的哦，  
-		//相当于是封装的数组！每次都要是新的哦
+		//注意它其实是可以包含一组套接字的，  
+		//相当于是封装的数组！每次都要是新的
 		//所以要写在循环里面
 
 		FD_SET(fileno(fp), &rset);
@@ -31,14 +31,24 @@ void str_cli(FILE* fp, int sockfd)
 
 		if(FD_ISSET(sockfd, &rset))
 		{
-			if(read(sockfd, recvline, MAXLINE) == 0)
+			int ret;
+			if((ret = read(sockfd, recvline, MAXLINE)) == 0)
 			{
 				perror("read error");
 				exit(0);
 			}
+<<<<<<< HEAD
+			else if( ret != -1)
+			{
+				printf("size: %d Server: %s\n",ret, recvline);
+				memset(recvline, 0x00, MAXLINE);
+			}
+
+=======
 			if(strlen(recvline) > 0)
 				printf("Server: %s\n", recvline + 4);
 			memset(recvline, 0x00, MAXLINE);
+>>>>>>> 513bf7387a61f15e29db096eb3ef836ad604aa56
 		}
 
 		if(FD_ISSET(fileno(fp), &rset))
@@ -72,7 +82,7 @@ int main(int argc, char const *argv[])
 		return 0;
 	}
 
-	if((sockfd = socket(AF_INET, SOCK_STREAM,0)) < 0)
+	if((sockfd = socket(PF_INET, SOCK_STREAM,0)) < 0)
 	{
 		printf("errno is: %d\n",errno);
 		perror("socket error");

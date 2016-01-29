@@ -7,7 +7,7 @@
 #include <errno.h>
 
 #define MAXLINE 1023
-#define PORT 	54321
+#define PORT 	33333
 
 int main(int argc, char const *argv[])
 {
