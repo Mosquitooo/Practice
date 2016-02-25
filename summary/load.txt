@@ -1,0 +1,13 @@
+
+CCUserDaily
+
+1. 连续签到奖励:SUB_G_SIGN_REWARD
+
+
+2. 在线时长奖励:SUB_G_ACTIVE_REWARD_REQUEST
+
+
+3. 活跃度奖励:SUB_G_DAILY_REWARD
+
+
+
