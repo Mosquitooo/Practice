@@ -2,12 +2,19 @@
 CCUserDaily
 
 1. 连续签到奖励:SUB_G_SIGN_REWARD
-
+	刷新： 
+		
+	验证：
+		
+	数据：
 
 2. 在线时长奖励:SUB_G_ACTIVE_REWARD_REQUEST
-
+	计时：
+	领取:
 
 3. 活跃度奖励:SUB_G_DAILY_REWARD
-
+	活跃度:
+	级别:
+	领取:
 
 

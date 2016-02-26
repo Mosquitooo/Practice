@@ -12,7 +12,6 @@ func merger(left,right []int)(result []int){
 			r++
 		}
 	}
-	
 	result = append(result, left[l:]...)   
 	result = append(result, right[r:]...)
 	return
@@ -24,7 +23,7 @@ func MergerSort(values []int)[]int{
 		return values 
 	}   
 	num := length / 2
-	left := MergerSort(values[:num])   
-	right := MergerSort(values[num:])   
+	left := MergerSort(values[:num])
+	right := MergerSort(values[num:])
 	return merger(left, right)
 }
