@@ -15,14 +15,13 @@ func quicksort(values []int, left int, right int){
 		for i<j && values[j] >= key{
 			j--
 		}
-		values[i] = values[j]
+		values[i],values[j] = values[j],values[i]
 		
 		for i<j && values[i] <= key{
 			i++
 		}
-		values[j] = values[i]
+		values[i],values[j] = values[j],values[i]
 	}
-	values[i] = key
 	
 	quicksort(values, left, i - 1)
 	quicksort(values, i+1, right)
