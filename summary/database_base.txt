@@ -29,3 +29,6 @@
 		SELECT FightTeamName FROM fightteam 
 		GROUP BY BINARY FightTeamName 
 		HAVING COUNT(FightTeamName) > 1;
+		
+联合查询插入
+	insert into present(U_ID,P_ID,P_Count,P_Time,P_Valid,SLotID) select U_ID,12025,1,'2015-12-07 11:10:00',1,0 from master;
