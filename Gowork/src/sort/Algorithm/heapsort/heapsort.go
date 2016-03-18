@@ -2,7 +2,6 @@
 package heapsort
 
 func percolateDown(values []int, index int, size int){
-	
 	for index*2 + 1 < size - 1{
 		max := index*2 + 1
 		if index*2 + 2 < size{
